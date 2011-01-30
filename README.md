@@ -1,4 +1,4 @@
-# Last seen plugin
+# Identify plugin
 
 This plugin allows Cinch to automatically identify with services.
 Currently, QuakeNet and all networks using NickServ are supported.
