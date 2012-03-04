@@ -9,13 +9,13 @@ module Cinch
       def identify(m)
         case config[:type]
         when :quakenet
-          @bot.debug "Identifying with Q"
+          debug "Identifying with Q"
           identify_quakenet
         when :secure_quakenet, :challengeauth
-          @bot.debug "Identifying with Q, using CHALLENGEAUTH"
+          debug "Identifying with Q, using CHALLENGEAUTH"
           identify_secure_quakenet
         when :nickserv
-          @bot.debug "Identifying with NickServ"
+          debug "Identifying with NickServ"
           identify_nickserv
         end
       end
