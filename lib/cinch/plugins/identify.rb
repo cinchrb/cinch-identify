@@ -23,9 +23,7 @@ module Cinch
         end
       end
 
-      # TODO as soon as Cinch 1.2.0 is released, use match and
-      # react_on instead
-      listen_to :notice, method: :challengeauth
+      match(/^CHALLENGE (.+?) (.+)$/, use_prefix: false, use_suffix: false, reacting_on: :notice)
       def challengeauth(m)
         return unless m.user && m.user.nick == "Q"
         if match = m.message.match(/^CHALLENGE (.+?) (.+)$/)
