@@ -17,6 +17,9 @@ module Cinch
         when :nickserv
           debug "Identifying with NickServ"
           identify_nickserv
+        when :kreynet
+          debug "Identifying with K on KreyNet"
+          identify_kreynet
         end
       end
 
@@ -49,6 +52,10 @@ module Cinch
 
       def identify_nickserv
         User("nickserv").send("identify %s %s" % [config[:username], config[:password]])
+      end
+
+      def identify_kreynet
+        User("K!k@krey.net").send("LOGIN %s %s" % [config[:username], config[:password]])
       end
     end
   end
