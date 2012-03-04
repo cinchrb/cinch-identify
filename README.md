@@ -1,7 +1,8 @@
 # Identify plugin
 
 This plugin allows Cinch to automatically identify with services.
-Currently, QuakeNet and all networks using NickServ are supported.
+Currently, QuakeNet, KreyNet and all networks using NickServ are
+supported.
 
 For QuakeNet, both the normal _auth_ and the more secure
 _challengeauth_ commands are supported.
@@ -35,7 +36,8 @@ None.
 ### :type
 The type of authentication. `:nickserv` for NickServ, `:quakenet` for
 the insecure _auth_ command on QuakeNet and `:secure_quakenet` or
-`:challengeauth` for the more secure _challengeauth_.
+`:challengeauth` for the more secure _challengeauth_. `:kreynet` for
+KreyNet.
 
 ### :username
 The username to use for authentication.
@@ -47,5 +49,5 @@ The password to use for authentication
 Check the install instructions for an example configuration.
 
 ## Warning
-Be warned that, when using the `:nickserv` or `:quakenet` types, the
-password will show up in the logs.
+Be warned that, when using the `:nickserv`, `:quakenet` or `:kreynet`
+types, the password will show up in the logs.
