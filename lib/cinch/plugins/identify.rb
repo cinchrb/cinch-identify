@@ -23,7 +23,7 @@ module Cinch
         end
       end
 
-      match(/^CHALLENGE (.+?) (.+)$/, use_prefix: false, use_suffix: false, reacting_on: :notice)
+      match(/^CHALLENGE (.+?) (.+)$/, use_prefix: false, use_suffix: false, react_on: :notice)
       def challengeauth(m)
         return unless m.user && m.user.nick == "Q"
         if match = m.message.match(/^CHALLENGE (.+?) (.+)$/)
