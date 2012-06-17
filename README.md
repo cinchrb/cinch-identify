@@ -40,7 +40,9 @@ the insecure _auth_ command on QuakeNet and `:secure_quakenet` or
 KreyNet.
 
 ### :username
-The username to use for authentication.
+The username to use for authentication. Do not set this when using
+NickServ on a network that only supports identifying as the current
+nick (e.g. dancer-ircd.)
 
 ### :password
 The password to use for authentication

@@ -49,7 +49,11 @@ module Cinch
       end
 
       def identify_nickserv
-        User("nickserv").send("identify %s %s" % [config[:username], config[:password]])
+        if config[:username]
+          User("nickserv").send("identify %s %s" % [config[:username], config[:password]])
+        else
+          User("nickserv").send("identify %s" % [config[:password]])
+        end
       end
 
       def identify_kreynet
