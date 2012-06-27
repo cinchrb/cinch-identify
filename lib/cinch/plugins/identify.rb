@@ -25,7 +25,7 @@ module Cinch
 
       match(/^You are now identified for/, use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
       def identified_nickserv(m)
-        if m.user == User("nickserv")
+        if m.user == User("nickserv") && config[:type] == :nickserv
           debug "Identified with NickServ"
           @bot.handlers.dispatch :identified, m
         end
