@@ -23,7 +23,15 @@ module Cinch
         end
       end
 
-      match(/^CHALLENGE (.+?) (.+)$/, use_prefix: false, use_suffix: false, react_on: :notice)
+      match(/^You are now identified for/, use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
+      def identified_nickserv(m)
+        if m.user == User("nickserv")
+          debug "Identified with NickServ"
+          @bot.handlers.dispatch :identified, m
+        end
+      end
+
+      match(/^CHALLENGE (.+?) (.+)$/, use_prefix: false, use_suffix: false, react_on: :notice, method: :challengeauth)
       def challengeauth(m)
         return unless m.user && m.user.nick == "Q"
         if match = m.message.match(/^CHALLENGE (.+?) (.+)$/)
