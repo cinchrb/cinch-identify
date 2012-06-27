@@ -12,6 +12,7 @@ First install the gem by running:
     [sudo] gem install cinch-identify
 
 Then load it in your bot:
+
     require "cinch"
     require "cinch/plugins/identify"
 
