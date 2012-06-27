@@ -20,6 +20,8 @@ module Cinch
         when :kreynet
           debug "Identifying with K on KreyNet"
           identify_kreynet
+        else
+          debug "Not going to identify with unknown type #{config[:type].inspect}"
         end
       end
 
