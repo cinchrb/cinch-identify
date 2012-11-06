@@ -50,7 +50,7 @@ module Cinch
       end
 
       match(/^You are now logged in as/, use_prefix: false, use_suffix: false, react_on: :notice, method: :identified_quakenet)
-      def identified_quakenet
+      def identified_quakenet(m)
         if m.user == User("q") && [:quakenet, :secure_quakenet, :challengeauth].include?(config[:type])
           debug "Identified with Q"
           @bot.handlers.dispatch(:identified, m)
