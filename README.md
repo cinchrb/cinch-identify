@@ -48,7 +48,7 @@ nick (e.g. dancer-ircd.)
 ### :password
 The password to use for authentication
 
-### :services_nick
+### :service_name
 The nick name of the service to send the identification message to.
 This option is currently only being used for `:userserv` and defaults
 to `"UserServ"`.
