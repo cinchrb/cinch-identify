@@ -60,8 +60,8 @@ module Cinch
         end
       end
 
-      match(/^You are now logged in as/, use_prefix: false, use_suffix: false, react_on: :notice, method: :indetified_userserv)
-      def indetified_userserv(m)
+      match(/^You are now logged in as/, use_prefix: false, use_suffix: false, react_on: :notice, method: :identified_userserv)
+      def identified_userserv(m)
         service_name = config[:service_name] || "UserServ"
         if m.user == User(service_name) && config[:type] == :userserv
           debug "Identified with UserServ"
