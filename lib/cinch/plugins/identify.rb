@@ -90,11 +90,8 @@ module Cinch
       end
 
       def identify_userserv
-        if config[:services_nick]
-          User(config[:services_nick]).send("LOGIN %s %s" % [config[:username], config[:password]])
-        else
-          User("UserServ").send("LOGIN %s %s" % [config[:username], config[:password]])
-        end
+        services_nick = config[:services_nick] || "UserServ"
+        User(services_nick).send("LOGIN %s %s" % [config[:username], config[:password]])
       end
     end
   end
