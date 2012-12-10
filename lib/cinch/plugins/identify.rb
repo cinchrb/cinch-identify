@@ -62,7 +62,8 @@ module Cinch
 
       match(/^You are now logged in as/, use_prefix: false, use_suffix: false, react_on: :notice, method: :indetified_userserv)
       def indetified_userserv(m)
-        if (m.user == User("userserv") || m.user == User(config[:service_name])) && config[:type] == :userserv
+        service_name = config[:service_name] || "UserServ"
+        if m.user == User(service_name) && config[:type] == :userserv
           debug "Identified with UserServ"
           @bot.handlers.dispatch :identified, m
         end
