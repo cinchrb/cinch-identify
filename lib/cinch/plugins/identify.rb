@@ -39,6 +39,8 @@ module Cinch
       match(/^CHALLENGE (.+?) (.+)$/, use_prefix: false, use_suffix: false, react_on: :notice, method: :challengeauth)
       def challengeauth(m)
         return unless m.user && m.user.nick == "Q"
+        return unless [:secure_quakenet, :challengeauth].include?(config[:type])
+
         if match = m.message.match(/^CHALLENGE (.+?) (.+)$/)
           challenge = match[1]
           @bot.debug "Received challenge '#{challenge}'"
