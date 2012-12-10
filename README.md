@@ -57,5 +57,5 @@ to `"UserServ"`.
 Check the install instructions for an example configuration.
 
 ## Warning
-Be warned that, when using the `:nickserv`, `:quakenet` or `:kreynet`
-types, the password will show up in the logs.
+Be warned that, when using the `:nickserv`, `:userserv`, `:quakenet`
+or `:kreynet` types, the password will show up in the logs.
