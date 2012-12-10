@@ -35,10 +35,10 @@ None.
 
 ## Options
 ### :type
-The type of authentication. `:nickserv` for NickServ, `:quakenet` for
-the insecure _auth_ command on QuakeNet and `:secure_quakenet` or
-`:challengeauth` for the more secure _challengeauth_. `:kreynet` for
-KreyNet.
+The type of authentication. `:nickserv` for NickServ, `:userserv` for
+UserServ, `:quakenet` for the insecure _auth_ command on QuakeNet and
+`:secure_quakenet` or `:challengeauth` for the more secure
+_challengeauth_. `:kreynet` for KreyNet.
 
 ### :username
 The username to use for authentication. Do not set this when using
@@ -47,6 +47,11 @@ nick (e.g. dancer-ircd.)
 
 ### :password
 The password to use for authentication
+
+### :services_nick
+The nick name of the service to send the identification message to.
+This option is currently only being used for `:userserv` and defaults
+to `"UserServ"`.
 
 ### Example configuration
 Check the install instructions for an example configuration.
