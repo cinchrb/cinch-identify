@@ -88,7 +88,7 @@ module Cinch
       def identify_kreynet
         User("K!k@krey.net").send("LOGIN %s %s" % [config[:username], config[:password]])
       end
-      
+
       def identify_userserv
         if config[:services_nick]
           User(config[:services_nick]).send("LOGIN %s %s" % [config[:username], config[:password]])
