@@ -20,6 +20,9 @@ module Cinch
         when :kreynet
           debug "Identifying with K on KreyNet"
           identify_kreynet
+        when :userserv
+          debug "Identifying with UserServ"
+          identify_userserv
         else
           debug "Not going to identify with unknown type #{config[:type].inspect}"
         end
@@ -57,6 +60,14 @@ module Cinch
         end
       end
 
+      match(/^You are now logged in as/, use_prefix: false, use_suffix: false, react_on: :notice, method: :indetified_userserv)
+      def indetified_userserv(m)
+        if (m.user == User("userserv") || m.user == User(config[:services_nick])) && config[:type] == :userserv
+          debug "Identified with UserServ"
+          @bot.handlers.dispatch :identified, m
+        end
+      end
+
       private
       def identify_quakenet
         User("Q@CServe.quakenet.org").send("auth %s %s" % [config[:username], config[:password]])
@@ -76,6 +87,14 @@ module Cinch
 
       def identify_kreynet
         User("K!k@krey.net").send("LOGIN %s %s" % [config[:username], config[:password]])
+      end
+      
+      def identify_userserv
+        if config[:services_nick]
+          User(config[:services_nick]).send("LOGIN %s %s" % [config[:username], config[:password]])
+        else
+          User("UserServ").send("LOGIN %s %s" % [config[:username], config[:password]])
+        end
       end
     end
   end
