@@ -11,6 +11,9 @@ module Cinch
         when :quakenet
           debug "Identifying with Q"
           identify_quakenet
+        when :dalnet
+          debug "Identifying with Nickserv on DALnet"
+          identify_dalnet
         when :secure_quakenet, :challengeauth
           debug "Identifying with Q, using CHALLENGEAUTH"
           identify_secure_quakenet
@@ -73,6 +76,10 @@ module Cinch
       end
 
       private
+      def identify_dalnet
+        User("Nickserv@services.dal.net").send("identify %s" % [config[:password]])
+      end
+      
       def identify_quakenet
         User("Q@CServe.quakenet.org").send("auth %s %s" % [config[:username], config[:password]])
       end
