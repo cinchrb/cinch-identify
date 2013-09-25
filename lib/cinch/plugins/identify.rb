@@ -28,6 +28,7 @@ module Cinch
         end
       end
 
+      match(/^You are successfully identified as/,           use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
       match(/^You are now identified for/,                   use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
       match(/^Password accepted - you are now recognized\./, use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
       def identified_nickserv(m)
