@@ -37,7 +37,8 @@ module Cinch
       match(/^Password accepted - you are now recognized\./, use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
       match(/^Hasło przyjęte - jesteś zidentyfikowany/,      use_prefix: false, use_suffix: false, react_on: :private, method: :identified_nickserv)
       def identified_nickserv(m)
-        if m.user == User("nickserv") && config[:type] == :nickserv
+        service_name = config[:service_name] || "nickserv"
+        if m.user == User(service_name) && config[:type] == :nickserv
           debug "Identified with NickServ"
           @bot.handlers.dispatch :identified, m
         end
@@ -72,6 +73,7 @@ module Cinch
       match(/^You are now logged in as/, use_prefix: false, use_suffix: false, react_on: :notice, method: :identified_userserv)
       def identified_userserv(m)
         service_name = config[:service_name] || "UserServ"
+        service_name = service_name.split("@").first
         if m.user == User(service_name) && config[:type] == :userserv
           debug "Identified with UserServ"
           @bot.handlers.dispatch :identified, m
@@ -93,6 +95,7 @@ module Cinch
 
       def identify_nickserv
         service_name = config[:service_name] || "nickserv"
+        service_name = service_name.split("@").first
         if config[:username]
           cmd = "identify %s %s" % [config[:username], config[:password]]
         else
