@@ -92,11 +92,13 @@ module Cinch
       end
 
       def identify_nickserv
+        service_name = config[:service_name] || "nickserv"
         if config[:username]
-          User("nickserv").send("identify %s %s" % [config[:username], config[:password]])
+          cmd = "identify %s %s" % [config[:username], config[:password]]
         else
-          User("nickserv").send("identify %s" % [config[:password]])
+          cmd = "identify %s" % [config[:password]]
         end
+        User(service_name).send(cmd)
       end
 
       def identify_kreynet
